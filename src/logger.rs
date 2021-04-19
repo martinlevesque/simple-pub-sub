@@ -19,8 +19,16 @@ macro_rules! create_function {
     ($func_name:ident, $current_level:expr) => {
         pub fn $func_name(msg: &str) {
             if log_level_i($current_level) >= log_level_i(log_level) {
-                println!("{} ({}) -- {}",
+                let out = format!("{} ({}) -- {}",
                     chrono::offset::Utc::now(), $current_level, msg);
+
+                if $current_level == "ERROR" {
+                    eprintln!("{}", out);
+                }
+                else {
+                    println!("{}", out);
+                }
+                
             }
         }
     };
