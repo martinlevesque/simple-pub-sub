@@ -2,7 +2,6 @@ use chrono;
 
 // INFO, DEBUG, ERROR
 
-
 const log_level: &str = std::env!("LOG_LEVEL");
 
 
