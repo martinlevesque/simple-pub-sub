@@ -2,7 +2,7 @@ use chrono;
 
 // INFO, DEBUG, ERROR
 
-const log_level: &str = std::env!("LOG_LEVEL");
+const LOG_LEVEL: &str = std::env!("LOG_LEVEL");
 
 
 fn log_level_i(level: &str) -> i32 {
@@ -17,7 +17,7 @@ fn log_level_i(level: &str) -> i32 {
 macro_rules! create_function {
     ($func_name:ident, $current_level:expr) => {
         pub fn $func_name(msg: &str) {
-            if log_level_i($current_level) >= log_level_i(log_level) {
+            if log_level_i($current_level) >= log_level_i(LOG_LEVEL) {
                 let out = format!("{} ({}) -- {}",
                     chrono::offset::Utc::now(), $current_level, msg);
 
